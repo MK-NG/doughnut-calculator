@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Doughnut calculator
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+       Doughnut calculator
+        
+      </h1>
+      <p>
+        This service allows you to see how many calories you consume when eating doughnuts.
+      </p>
+
+      <h2 class="govuk-heading-m">The real weight of a doughnut</h2>
+
+      <p>
+        Doughnuts are high in calories and contain a lot of fat and sugar without contributing much nutritional value. The calorie count and nutrition facts for doughnuts will differ depend on the type of doughnut it is (cake, glazed, filled, etc.) and the size.
+    </p>
+  
+
+
+      {{ govukButton({
+        text: "Start now",
+        href: "what-type",
+        isStartButton: true
+      }) }}
+     
+    </div>
+  </div>
+
+{% endblock %}

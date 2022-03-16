@@ -1,0 +1,35 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    How many doughnuts? 
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="summary"> 
+        {{ govukInput({
+          label: {
+            text: "How many doughnuts have you eaten?",
+            classes: "govuk-label--xl",
+            isPageHeading: true
+          },
+          classes: "govuk-input--width-3",
+          id: "amount",
+          name: "amount",
+          inputmode: "numeric",
+          pattern: "[0-9]*",
+          value: data['amount'],
+          spellcheck: false
+        }) }}
+   
+        {{ govukButton({
+          text: "Continue"
+          }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

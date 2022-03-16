@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+ What type of doughnut are you eating? 
+{% endblock %}
+
+{% block beforeContent %} 
+
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post" action="how-many"> 
+            {{ govukRadios({
+            idPrefix: "type",
+            name: "type",
+            fieldset: {
+                legend: {
+                text: " What type of doughnut are you eating?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+                }
+            },
+            items: [
+                {
+                value: "glazed",
+                text: "A glazed doughnut",
+                hint: {
+                    text: "52 calories"
+                },
+                checked: true if data['size'] == 'glazed'
+                },
+                {
+                value: "jelly",
+                text: "A jelly filled doughnut",
+                hint: {
+                    text: "289 calories"
+                },
+                checked: true if data['size'] == 'jelly'
+                },
+                {
+                value: "creme",
+                text: "A creme filled doughnut",
+                hint: {
+                    text: "307 calories"
+                },
+                checked: true if data['size'] == 'creme'
+                }
+            ]
+            }) }}
+        
+        {{ govukButton({
+            text: "Continue"
+            }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Your results
+{% endblock %}
+
+{% block content %}
+
+
+
+{% set calories %}
+ {% if data['type'] == 'glazed' %}
+    52
+  {% elif  data['type'] == 'jelly' %}
+    289
+  {% elif  data['type'] == 'creme' %}
+   307 
+   {% endif %}
+{% endset %}
+
+{% set totalCalories %}
+{{calories*data['amount']}}
+{% endset %}
+ 
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Your results
+       </h1>
+       {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Type of doughnut"
+            },
+            value: {
+              html: data['type']
+            },
+            actions: {
+              items: [
+                {
+                  href: "what-type",
+                  text: "Change",
+                  visuallyHiddenText: "type"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Amount"
+            },
+            value: {
+              html: data['amount']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "amount"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Total calories"
+            },
+            value: {
+              html: totalCalories
+            }
+          }
+        ]
+      }) }}  
+        
+
+
+    </div>
+  </div>
+
+{% endblock %}
